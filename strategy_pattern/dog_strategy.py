@@ -1,6 +1,6 @@
-from abs import LoudBarkStrategy
-from abs import QuietBarkStrategy
-from abs import FastTailWagStrategy
+from dog_abstract_strategy import LoudBarkStrategy
+from dog_abstract_strategy import QuietBarkStrategy
+from dog_abstract_strategy import FastTailWagStrategy
 
 loud_bark = LoudBarkStrategy()
 quiet_bark = QuietBarkStrategy()
