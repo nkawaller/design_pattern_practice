@@ -36,7 +36,7 @@ class ConcreteSubject(Subject):
 
     def some_business_logic(self) -> None:
         print("\nSubject: I'm doing something important.")
-        self._state = randrange(0,10)
+        self._state = randrange(0, 10)
 
         print(f"Subject: My state has just changed to: {self._state}")
         self.notify()
@@ -65,7 +65,7 @@ if __name__ == '__main__':
     observer_a = ConcreteObserverA()
     subject.attach(observer_a)
 
-    observer_b = ConcreteObserverB
+    observer_b = ConcreteObserverB()
     subject.attach(observer_b)
 
     subject.some_business_logic()
