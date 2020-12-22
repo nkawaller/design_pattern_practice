@@ -40,4 +40,10 @@ class ConcreteSubject(Subject):
 
         print(f"Subject: My state has just changed to: {self._state}")
         self.notify()
+
+
+class Observer(ABC):
+    @abstractmethod
+    def update(self, subject: Subject) -> None:
+        pass
     
