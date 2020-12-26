@@ -57,3 +57,16 @@ class SecondConcreteObserver(Observer):
     def update(self, subject: Subject) -> None:
         if subject._state == 0 or subject._state >= 2:
             print("SecondConcreteObserver: Reacted to the event")
+
+if __name__ == '__main__':
+
+    subject = ConcreteSubject()
+
+    first_observer = FirstConcreteObserver()
+    subject.attach(first_observer)
+
+    second_observer = SecondConcreteObserver()
+    subject.attach(second_observer)
+
+    subject.some_business_logic()
+    subject.some_business_logic()           
