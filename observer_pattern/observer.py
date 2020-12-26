@@ -41,3 +41,19 @@ class ConcreteSubject(Subject):
 
         print(f"Subject: My state has just changed to: {self._state}")
         self.notify()
+
+
+class Observer(ABC):
+    @abstractmethod
+    def update(self, subject: Subject) -> None:
+        pass
+
+class FirstConcreteObserver(Observer):
+    def update(self, subject: Subject) -> None:
+        if subject._state < 3:
+            print("FirstConcreteObserver: Reacted to the event")
+
+class SecondConcreteObserver(Observer):
+    def update(self, subject: Subject) -> None:
+        if subject._state == 0 or subject._state >= 2:
+            print("SecondConcreteObserver: Reacted to the event")
