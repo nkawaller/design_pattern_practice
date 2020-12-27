@@ -50,10 +50,25 @@ class Observer(ABC):
 
 class HomeDisplayA(Observer):
     def update(self, subject: Subject) -> None:
-        if subject._state < 3
+        if subject._state < 3:
             print("HomeDisplayA: Reacted to the weather data")
 
 class HomeDisplayB(Observer):
     def update(self, subject: Subject) -> None:
         if subject._state == 0 or subject._state >= 2:
             print("HomeDisplayB: Reacted to the weather data")
+
+
+if __name__ == '__main__':
+
+    weather_station = ConcreteWeatherStation()
+
+    home_display_a = HomeDisplayA()
+    weather_station.attach(home_display_a)
+
+    home_display_b = HomeDisplayB()
+    weather_station.attach(home_display_b)
+
+    weather_station.some_weather_calculations()
+    weather_station.some_weather_calculations()
+
