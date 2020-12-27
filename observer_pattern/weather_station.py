@@ -48,3 +48,12 @@ class Observer(ABC):
     def update(self, subject: Subject) -> None:
         pass
 
+class HomeDisplayA(Observer):
+    def update(self, subject: Subject) -> None:
+        if subject._state < 3
+            print("HomeDisplayA: Reacted to the weather data")
+
+class HomeDisplayB(Observer):
+    def update(self, subject: Subject) -> None:
+        if subject._state == 0 or subject._state >= 2:
+            print("HomeDisplayB: Reacted to the weather data")
