@@ -41,3 +41,10 @@ class ConcreteWeatherStation(Subject):
 
         print(f"Weather Station: My state has just changed")
         self.notify()
+
+
+class Observer(ABC):
+    @abstractmethod
+    def update(self, subject: Subject) -> None:
+        pass
+
