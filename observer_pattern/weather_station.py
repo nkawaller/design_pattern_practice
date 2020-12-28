@@ -71,3 +71,7 @@ if __name__ == '__main__':
 
     weather_station.some_weather_calculations()
     weather_station.some_weather_calculations()
+
+    weather_station.detach(home_display_a)
+
+    weather_station.some_weather_calculations()
