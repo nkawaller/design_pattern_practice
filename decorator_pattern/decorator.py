@@ -28,3 +28,6 @@ class ConcreteDecoratorA(Decorator):
 class ConcreteDecoratorB(Decorator):
     def operation(self) -> str:
         return f"ConcreteDecoratorB({self.component.operation()})"
+
+class client_code(component: Component) -> None:
+    print(f"RESULT: {component.operation()}", end='')
