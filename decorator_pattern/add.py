@@ -8,6 +8,7 @@ class Add:
         self.b = b
 
     def process(self):
+        print("I'm an add process")
         return self.a + self.b
 
 
@@ -24,10 +25,21 @@ class Multiply:
         self.num = num
 
     def process(self):
+        print("I'm a multiply process")
         return self.decorated.process() * self.num
+
+class Divide:
+    def __init__(self, decorated, num):
+        self.decorated = decorated
+        self.num = num
+
+    def process(self):
+        print("I'm a divide process")
+        return self.decorated.process() / self.num
 
 
 add_object = Add(2,2)
 
 multiply_add_object = Multiply(add_object, 4)
-print(multiply_add_object.process())
+divide_multiply_add_object = Divide(multiply_add_object, 8)
+print(divide_multiply_add_object.process())
