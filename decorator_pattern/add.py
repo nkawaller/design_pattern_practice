@@ -11,11 +11,23 @@ class Add:
         return self.a + self.b
 
 
-def modify_process(decorated_object, num):
-    return decorated_object.process()*num
+# def modify_process(decorated_object, num):
+#     return decorated_object.process()*num
+
+# class EnclosedAdd:
+#     def __init__(self, decorated_object):
+#         self.decorated_object = decorated_object
+
+class Multiply:
+    def __init__(self, decorated, num):
+        self.decorated = decorated
+        self.num = num
+
+    def process(self):
+        return self.decorated.process() * self.num
 
 
-a = Add(2,2)
+add_object = Add(2,2)
 
-print(a.process())
-print(modify_process(a,3))
+multiply_add_object = Multiply(add_object, 4)
+print(multiply_add_object.process())
