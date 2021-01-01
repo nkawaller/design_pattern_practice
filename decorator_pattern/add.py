@@ -11,14 +11,6 @@ class Add:
         print("I'm an add process")
         return self.a + self.b
 
-
-# def modify_process(decorated_object, num):
-#     return decorated_object.process()*num
-
-# class EnclosedAdd:
-#     def __init__(self, decorated_object):
-#         self.decorated_object = decorated_object
-
 class Multiply:
     def __init__(self, decorated, num):
         self.decorated = decorated
