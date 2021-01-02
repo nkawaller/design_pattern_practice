@@ -24,6 +24,9 @@ class Multiply:
     def process(self):
         return self.decorated.process() * self.num
 
+# process() from Add does it's thing, and then
+# process() from Multiply does it's thing
+
 ObjectA = Add(2,2)
 
 # print(ObjectA.process())
