@@ -17,7 +17,7 @@ class EnclosedAdd:
         return self.decorated_object.process() * self.num
 
 class Divide:
-    def __init__(self.decorated_object, num):
+    def __init__(self, decorated_object, num):
         self.decorated_object = decorated_object
         self.num = num
 
@@ -27,4 +27,5 @@ class Divide:
 
 add_object = Add(5,5)
 enclosed_add_object = EnclosedAdd(add_object, 5)
-print(enclosed_add_object.process())
+divide_enclosed_add_object = Divide(enclosed_add_object, 10)
+print(divide_enclosed_add_object.process())
