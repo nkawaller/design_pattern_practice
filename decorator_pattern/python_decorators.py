@@ -1,0 +1,1 @@
+# Python decorators are different from the decorator pattern
