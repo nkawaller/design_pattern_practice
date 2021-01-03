@@ -27,10 +27,20 @@ class Multiply:
 # process() from Add does it's thing, and then
 # process() from Multiply does it's thing
 
+class Divide:
+    def __init__(self, decorated, num):
+        self.decorated = decorated
+        self.num = num
+
+    def process(self):
+        return self.decorated.process() // self.num
+
 ObjectA = Add(2,2)
 
 # print(ObjectA.process())
 # print(modify_process(ObjectA,4))
 # enclosed_object_A = EnclosedAdd(ObjectA)
-multiply_add_object = Multiply(ObjectA, 4)
-print(multiply_add_object.process())
+multiply_ObjectA = Multiply(ObjectA, 4)
+print(multiply_ObjectA.process())
+divide_multiply_ObjectA = Divide(multiply_ObjectA, 2)
+print(divide_multiply_ObjectA.process())
