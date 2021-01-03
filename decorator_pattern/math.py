@@ -6,9 +6,12 @@ class Add:
     def process(self):
         return self.a + self.b
 
-def modify_process(decorated_object, num):
-    return decorated_object.process()*num
+# Enclose it within a decorating object with a similar interface
+class EnclosedAdd:
+    def __init__(self, decorated_object):
+        print("I'm wrapping the add object")
+        self.decorated_object = decorated_object
 
 add_object = Add(5,5)
-
-print(add_object.process())
+enclosed_add_object = EnclosedAdd(add_object)
+print(enclosed_add_object)
