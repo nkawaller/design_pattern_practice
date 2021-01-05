@@ -29,4 +29,4 @@ class SongSerializer:
             artist.text = song.artist
             return et.tostring(song_info, encoding='unicode')
         else:
-            raise: ValueError(format)
+            raise ValueError(format)
