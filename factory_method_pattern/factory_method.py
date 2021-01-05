@@ -1,11 +1,11 @@
 # Studying the factory method pattern using this article:
 # https://realpython.com/factory-method-python/
 
-# How you'd handle different situations without the factory method
+# How you'd handle different situations without the factory method pattern
 
 import json
 import xml.etree.ElementTree as et
-
+"""
 class Song:
     def __init__(self, song_id, title, artist):
         self.song_id = song_id
@@ -30,3 +30,25 @@ class SongSerializer:
             return et.tostring(song_info, encoding='unicode')
         else:
             raise ValueError(format)
+
+"""
+# Refactoring the code into the desired interface
+
+class SongSerializer:
+    def serialize(self, song, format):
+        if format == 'JSON':
+            return self._serialize_to_json(song)
+
+    def _serialize_to_json(self, song):
+        payload = {
+            'id': song.song_id,
+            'title': song.title,
+            'artist': song.artist
+        }
+        return json.dumps(payload)
+
+"""
+import factory_method as sd
+song = sd.Song('1', 'Water of Love', 'Dire Straits')
+serializer = sd.SongSerializer()
+"""
