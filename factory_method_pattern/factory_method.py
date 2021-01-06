@@ -38,6 +38,10 @@ class SongSerializer:
     def serialize(self, song, format):
         if format == 'JSON':
             return self._serialize_to_json(song)
+        elif format == 'XML':
+            return self._serialize_to_xml(song)
+        else:
+            raise ValueError(format)
 
     def _serialize_to_json(self, song):
         payload = {
@@ -47,6 +51,13 @@ class SongSerializer:
         }
         return json.dumps(payload)
 
+    def _serialize_to_xml(self, song):
+        song_info = et.Element('song', attrib={'id': song.song_id})
+            title = et.SubElement(song_info, 'title')
+            title.text = song.title
+            artist = et.SubElement(song_info, 'artist')
+            artist.text = song.artist
+            return et.tostring(song_info, encoding='unicode')
 """
 import factory_method as sd
 song = sd.Song('1', 'Water of Love', 'Dire Straits')
