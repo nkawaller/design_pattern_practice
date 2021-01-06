@@ -60,16 +60,17 @@ class SongSerializer:
         return et.tostring(song_info, encoding='unicode')
 
 """
-
+"""
 # SongSerializer class from above, refactored
 class SongSerializer:
-    
+
     # This method is the application code that depends on an interface to complete its task
     # This is referred to as the client component of pattern
     def serialize(self, song, format):
         serializer = self._get_serializer(format)
         return serializer(song)
     
+    # This is the creator component
     def _get_serializer(self, format):
         if format == 'JSON':
             return self._serialize_to_json
@@ -77,7 +78,8 @@ class SongSerializer:
             return self._serialize_to_xml
         else:
             raise ValueError(format)
-
+    
+    # This is a product component
     def _serialize_to_json(self, song):
         payload = {
             'id': song.song_id,
@@ -86,6 +88,7 @@ class SongSerializer:
         }
         return json.dumps(payload)
 
+    # This is another product component
     def _serialize_to_xml(self, song):
         song_info = et.Element('song', attrib={'id': song.song_id})
         title = et.SubElement(song_info, 'title')
@@ -93,6 +96,42 @@ class SongSerializer:
         artist = et.SubElement(song_info, 'artist')
         artist.text = song.artist
         return et.tostring(song_info, encoding='unicode')
+"""
+# Removing the methods from the class
+class SongSerializer:
+
+    # This method is the application code that depends on an interface to complete its task
+    # This is referred to as the client component of pattern
+    def serialize(self, song, format):
+        serializer = get_serializer(format)
+        return serializer(song)
+    
+# This is the creator component
+def _get_serializer(format):
+    if format == 'JSON':
+        return self._serialize_to_json
+    elif format == 'XML':
+        return self._serialize_to_xml
+    else:
+        raise ValueError(format)
+    
+# This is a product component
+def _serialize_to_json(song):
+    payload = {
+        'id': song.song_id,
+        'title': song.title,
+        'artist': song.artist
+    }
+    return json.dumps(payload)
+
+# This is another product component
+def _serialize_to_xml(song):
+    song_info = et.Element('song', attrib={'id': song.song_id})
+    title = et.SubElement(song_info, 'title')
+    title.text = song.title
+    artist = et.SubElement(song_info, 'artist')
+    artist.text = song.artist
+    return et.tostring(song_info, encoding='unicode')
 
 
 # Driver code
