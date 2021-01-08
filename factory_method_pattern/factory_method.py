@@ -107,11 +107,11 @@ class SongSerializer:
         return serializer(song)
     
 # This is the creator component
-def _get_serializer(format):
+def get_serializer(format):
     if format == 'JSON':
-        return self._serialize_to_json
+        return _serialize_to_json
     elif format == 'XML':
-        return self._serialize_to_xml
+        return _serialize_to_xml
     else:
         raise ValueError(format)
     
